@@ -51,8 +51,7 @@ class SimpleCRUD:
     db = MySQLdb.connect("localhost","lunchy","lunchroulette","lunch_roulette" )
     cursor = db.cursor()
     for i, entry in enumerate(feed.entry):
-      print '%s %s' % (entry.title.text, entry.content.text)
-      # print '%s' % (entry.content.text)
+      print map(lambda e: (e[0],e[1].text), entry.custom.items())
 
     # cursor.execute("SELECT VERSION()")
     # data = cursor.fetchone()
