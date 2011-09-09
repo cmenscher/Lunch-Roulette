@@ -7,7 +7,7 @@
 #
 # Host: ec2-50-16-167-75.compute-1.amazonaws.com (MySQL 5.1.52)
 # Database: lunch_roulette
-# Generation Time: 2011-09-09 15:45:55 -0400
+# Generation Time: 2011-09-09 15:53:08 -0400
 # ************************************************************
 
 
@@ -20,19 +20,6 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
-# Dump of table Lunches
-# ------------------------------------------------------------
-
-CREATE TABLE `Lunches` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `lunch_id` int(11) DEFAULT NULL,
-  `person_id` int(11) DEFAULT NULL,
-  `lunch_date` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
-
-
 # Dump of table People
 # ------------------------------------------------------------
 
@@ -42,8 +29,8 @@ CREATE TABLE `People` (
   `email` varchar(512) DEFAULT NULL,
   `avail_1` tinyint(1) DEFAULT NULL,
   `avail_2` tinyint(1) DEFAULT NULL,
-  `avail_3` int(11) DEFAULT NULL,
-  `avail_4` int(11) DEFAULT NULL,
+  `avail_3` tinyint(11) DEFAULT NULL,
+  `avail_4` tinyint(11) DEFAULT NULL,
   `last_updated` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
