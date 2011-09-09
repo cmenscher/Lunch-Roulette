@@ -50,11 +50,12 @@ class SimpleCRUD:
   def _ProcessData(self, feed):
     db = MySQLdb.connect("localhost","lunchy","lunchroulette","lunch_roulette" )
     cursor = db.cursor()
-    cursor.execute("SELECT VERSION()")
-    data = cursor.fetchone()
-    print "VERSION %s" % data
     for i, entry in enumerate(feed.entry):
-      print '%s = %s\n' % (entry.title.text, entry.content.text)
+      print '%s %s' % (entry.title.text, entry.content.text)
+      # print '%s' % (entry.content.text)
+
+    # cursor.execute("SELECT VERSION()")
+    # data = cursor.fetchone()
     db.close()
 
   def Run(self):
@@ -73,16 +74,10 @@ class SimpleCRUD:
     id_parts = feed.entry[0].id.text.split('/')
     ws_key = id_parts[len(id_parts) - 1]
     
-    # Get the cells feed
-    feed = self.gd_client.GetCellsFeed(doc_key, ws_key)
-    # self._PrintFeed(feed)
-  
-    query = gdata.spreadsheet.service.CellQuery()
-    query['min-col'] = '1'
-    query['max-col'] = '3'
-    query['min-row'] = '2'
-    feed = self.gd_client.GetCellsFeed(doc_key, ws_key, query=query)
+    # Get the list feed
+    feed = self.gd_client.GetListFeed(doc_key, ws_key)
     self._ProcessData(feed)
+  
 
 def main():
   # parse command line options
