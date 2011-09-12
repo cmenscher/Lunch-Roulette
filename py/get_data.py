@@ -34,7 +34,7 @@ class SimpleCRUD:
     cursor = db.cursor()
     for i, entry in enumerate(feed.entry):
       rowdata =  map(lambda e: (e[1].text), entry.custom.items())
-      l_updated = datetime.datetime.strptime(rowdata[0],"%d/%m/%Y %H:%M:%S")
+      l_updated = datetime.datetime.strptime(rowdata[0],"%m/%d/%Y %H:%M:%S")
       use_av_1 = 0
       use_av_2 = 0
       use_av_3 = 0
