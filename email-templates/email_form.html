@@ -1,0 +1,52 @@
+<center>
+	<table width="600" style="margin-top: 20px;">
+		<tr>
+			<td colspan="4">
+				<div style="padding: 10px; line-height: 20px;">
+					<strong>Hi {{ name }}!</strong><br>
+					Betaworks Lunch Roulette is on for today!  If you'd like to participate, select the times you're available to meet for lunch.  Around 11am we'll send you an email with your randomly-selected group of Betaworks colleagues.  Meet them in the Betaworks lobby at noon.<br /><br />Lunch should take about an hour, it's up to the group to decide where to go!
+				</div>
+			</td>
+		</tr>
+
+        <tr id="form" style="border-bottom: 0 none;"> 
+			<td>
+            <p><a href="https://docs.google.com/spreadsheet/embeddedform?formkey=dEJ5cWwwUTVOdEY1S2JCaWFQRHEzTUE6MQ&entry_2={{ email }}&embedded=true&ifq">You can reach this form in a browser as well...</a></p>
+			<form action="https://docs.google.com/a/chartbeat.com/spreadsheet/formResponse?formkey=dEJ5cWwwUTVOdEY1S2JCaWFQRHEzTUE6MQ&embedded=true&ifq" method="POST" id="ss-form"> 
+			<div class="errorbox-good"> 
+    			<div class="ss-item  ss-checkbox">
+        			<div class="ss-form-entry">
+            			<label class="ss-q-title" for="entry_0">When are you available? (check all that apply):</label> 
+            			<label class="ss-q-help" for="entry_0"></label> 
+            			<ul class="ss-choices">
+                            <li class="ss-choice-item"><label class="ss-choice-label"><input type="checkbox" name="entry.0.group" value="12:00" class="ss-q-checkbox" id="group_0_1"> 12:00</label></li>
+                            <li class="ss-choice-item"><label class="ss-choice-label"><input type="checkbox" name="entry.0.group" value="12:30" class="ss-q-checkbox" id="group_0_2"> 12:30</label></li>
+                            <li class="ss-choice-item"><label class="ss-choice-label"><input type="checkbox" name="entry.0.group" value="1:00" class="ss-q-checkbox" id="group_0_3"> 1:00</label></li>
+                            <li class="ss-choice-item"><label class="ss-choice-label"><input type="checkbox" name="entry.0.group" value="1:30" class="ss-q-checkbox" id="group_0_4"> 1:30</label></li> 
+            			</ul>
+        			</div>
+    			</div>
+			</div> 
+			<br />
+			<div class="errorbox-good"> 
+                <div class="ss-item  ss-text">
+    			     <div class="ss-form-entry">
+        			     <label class="ss-q-title" for="entry_2">Your email:</label>
+        			     <label class="ss-q-help" for="entry_2"></label> 
+        			     <input type="text" name="entry.2.single" value="{{ email }}" class="ss-q-short" id="entry_2">
+        			 </div>
+                </div>
+            </div> 
+			<br> 
+			<input type="hidden" name="pageNumber" value="0"> 
+			<input type="hidden" name="backupCache" value=""> 
+			<div class="ss-item ss-navigate">
+                <div class="ss-form-entry"> 
+                    <input type="submit" name="submit" value="Submit">
+                </div>
+            </div>
+            </form> 
+			</td> 
+		</tr>
+	</table>
+</center>

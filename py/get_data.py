@@ -71,7 +71,7 @@ def main():
     opts, args = getopt.getopt(sys.argv[1:], "", ["user=", "pw="])
   except getopt.error, msg:
     #python get_data.py --user=lunchroul@gmail.com --pw=betawork$
-    print 'python spreadsheetExample.py --user [username] --pw [password] '
+    print 'python get_data.py --user [username] --pw [password] '
     sys.exit(2)
  
   user = ''
