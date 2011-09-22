@@ -57,7 +57,13 @@ def create_lunches(slot_id, slot1, slot2, slot3, slot4):
       if slot2.count(row) > 0: slot2.remove(row)
       if slot3.count(row) > 0: slot3.remove(row)
       if slot4.count(row) > 0: slot4.remove(row)
-      print "slot %s, lunch id %s: %s" % (slot_id, lunch_id, row[1])
+      # print "slot %s, lunch id %s: %s" % (slot_id, lunch_id, row[1])
+      if slot_id == 1: l_date = datetime.datetime.strptime(str(datetime.date.today()) + " 12:00:00","%Y-%m-%d %H:%M:%S")
+      if slot_id == 2: l_date = datetime.datetime.strptime(str(datetime.date.today()) + " 12:30:00","%Y-%m-%d %H:%M:%S")
+      if slot_id == 3: l_date = datetime.datetime.strptime(str(datetime.date.today()) + " 13:00:00","%Y-%m-%d %H:%M:%S")
+      if slot_id == 4: l_date = datetime.datetime.strptime(str(datetime.date.today()) + " 13:30:00","%Y-%m-%d %H:%M:%S")
+      mysql_insert_qry = "insert into Lunches (lunch_id, person_id, lunch_date) values (%s, %s, '%s')" % (lunch_id, row[0], l_date)
+      cursor.execute(mysql_insert_qry)
       cnt += 1
       if cnt == 3:
         cnt = 0
