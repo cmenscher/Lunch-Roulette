@@ -22,15 +22,17 @@ import datetime
 
 class SimpleCRUD:
 
-  def __init__(self, email, password):
+  def __init__(self, email, password, db_user, db_pw):
     self.gd_client = gdata.spreadsheet.service.SpreadsheetsService()
     self.gd_client.email = email
     self.gd_client.password = password
     self.gd_client.source = 'betaworks lunch roulette'
     self.gd_client.ProgrammaticLogin()
+    self.db_user = db_user
+    self.db_pq = db_pw
 
   def _ProcessData(self, feed):
-    db = MySQLdb.connect("localhost","lunchy","lunchroulette","lunch_roulette" )
+    db = MySQLdb.connect("localhost","lunchy", self.db_user, self.db_password)
     cursor = db.cursor()
     for i, entry in enumerate(feed.entry):
       rowdata =  map(lambda e: (e[1].text), entry.custom.items())
@@ -68,27 +70,33 @@ class SimpleCRUD:
 def main():
   # parse command line options
   try:
-    opts, args = getopt.getopt(sys.argv[1:], "", ["user=", "pw="])
+    opts, args = getopt.getopt(sys.argv[1:], "", ["goog_user=", "goog_pw="])
   except getopt.error, msg:
     #python get_data.py --user=lunchroul@gmail.com --pw=betawork$
-    print 'python get_data.py --user [username] --pw [password] '
+    print 'python get_data.py --goog_user [username] --goog_pw [password] --db_user= [username] --db_pw [password]'
     sys.exit(2)
  
-  user = ''
-  pw = ''
+  goog_user = ''
+  goog_pw = ''
+  db_user=''
+  db_pw=''
   key = ''
   # Process options
   for o, a in opts:
-    if o == "--user":
-      user = a
-    elif o == "--pw":
-      pw = a
+    if o == "--goog_user":
+      goog_user = a
+    elif o == "--goog_pw":
+      goog_pw = a
+    if o == "--db_user":
+      db_user = a
+    elif o == "--db_pw":
+      db_pw = a
 
   if user == '' or pw == '':
-    print 'python get_data.py --user [username] --pw [password] '
+    print 'python get_data.py --goog_user [username] --goog_pw [password] --db_user= [username] --db_pw [password]'
     sys.exit(2)
   
-  sample = SimpleCRUD(user, pw)
+  sample = SimpleCRUD(goog_user, goog_pw, db_user, db_pw)
   sample.Run()
 
 
